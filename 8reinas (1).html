@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8 Reinas</title>
+    <style>
+        body {
+            background-color: rgb(57, 41, 104);
+        }
+        .cuerpo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .tabla {
+            background-color: #fff;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            box-shadow: 0px 0px 10px #8a8a8a,
+                        0px 0px 20px #d2d2d2;
+        }
+        .tabla td {
+            transition: 0.3s;
+        }
+        .tabla:hover td {
+            width: 60px;
+            height: 60px;
+        }
+        .pieTabla {
+            display: grid;
+            grid-template-rows: 50px 50px;
+            flex-wrap: wrap-reverse;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .contador {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            grid-row-start: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: xx-large;
+            font-weight: bold;
+            color: #fff;
+        }
+        button {
+            grid-row-start: 2;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            margin-left: 15px;
+            background-color: aquamarine;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: medium;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        button:hover {
+            box-shadow: 0px 0px 10px rgb(62, 203, 238),
+                        0px 0px 20px rgb(157, 226, 243);
+        }
+        table{
+            border:1px solid;
+            border-collapse: collapse;
+        }
+        tr{
+            border:1px solid;
+            border-collapse: collapse;
+        }
+        td{
+            border:1px solid;
+            border-collapse: collapse;
+            width:50px;
+            height: 50px;
+        }
+        tr:nth-child(even) td:nth-child(even), tr:nth-child(odd) td:nth-child(odd){
+            background-color: black;
+        }
+        tr:nth-child(odd) td:nth-child(even), tr:nth-child(odd) td:nth-child(even){
+            background-color: white;
+        }
+        div {
+            font-size: xx-large;
+        }
+    </style>
+    <script>
+        var contador = 0;
+        function celdaclick(ana){
+            // Este if valida si la celda tiene imagen de fondo o no
+            if ((window.getComputedStyle(ana).backgroundImage) == 'none') {
+                if (contador != 8) {
+                    contador++;
+                    ana.style="background-image:url(./2x1.png); background-size: cover;";
+                }
+            }
+            else {
+                contador--;
+                ana.style="background-image:none;";
+            }
+            document.getElementById("div_Contador").innerHTML = "Reinas Colocadas: " + contador;
+        }
+        function simulacion() {
+            // alert("hola");
+            
+        }
+        function reiniciar(cont) {
+            //alert("Hola");
+            var celda = document.getElementById("tabla_ajedrez").getElementsByTagName("td");
+            for (let i = 0; i < celda.length; i++) {
+                celda[i].style = "backgroundImage: none;";
+            }
+            contador = cont;
+            document.getElementById("div_Contador").innerHTML = "Reinas Colocadas: " + contador;
+        }
+        function solucion1() {
+            //alert("");
+            reiniciar(8);
+            var celda = document.getElementById("tabla_ajedrez");
+            celda.rows[0].cells[4].style = "background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celda.rows[1].cells[1].style = "background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celda.rows[2].cells[3].style = "background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celda.rows[3].cells[6].style = "background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celda.rows[4].cells[2].style = "background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celda.rows[5].cells[7].style = "background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celda.rows[6].cells[5].style = "background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celda.rows[7].cells[0].style = "background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+        }
+        function solucion2() {
+            reiniciar(8);
+            var celda = document.getElementById("tabla_ajedrez");
+            celda.rows[0].cells[4].style = "background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celda.rows[1].cells[2].style = "background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celda.rows[2].cells[7].style = "background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celda.rows[3].cells[3].style = "background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celda.rows[4].cells[6].style = "background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celda.rows[5].cells[0].style = "background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celda.rows[6].cells[5].style = "background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+            celda.rows[7].cells[1].style = "background-image:url(./2x1.png); background-repeat:no-repeat; background-size: cover;";
+        }
+    </script>
+</head>
+<body>
+    <div class="cuerpo">
+        <div class="tabla">
+            <table id="tabla_ajedrez">
+                <tr>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                </tr>
+                <tr>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                </tr>
+                <tr>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                </tr>
+                <tr>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                </tr>
+                <tr>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                </tr>
+                <tr>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                </tr>
+                <tr>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                    <td onclick="celdaclick(this)"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+        <div class="pieTabla">
+            <div id="div_Contador" class="contador">
+                Reinas Colocadas: 0
+            </div>
+            <button onclick="simulacion()">Iniciar Simulación</button>
+            <button onclick="reiniciar(0)">Reiniciar</button>
+            <button onclick="solucion1()">Solución 1</button>
+            <button onclick="solucion2()">Solución 2</button>
+        </div>
+    </div>
+</body>
+</html>
